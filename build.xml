@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="passmg" name="passmg build">
+  <!-- Applet building dependencies -->
+  <property name="JC222" value="../AppletPlayground/ext/java_card_kit-2_2_2"/>
+  <property name="JC303" value="../AppletPlayground/ext/java_card_kit-3_0_3"/>
+  <property name="OP20" value="../AppletPlayground/ext/visa_openplatform-2_0"/>
+  <property name="GP211" value="../AppletPlaygroundext/globalplatform-2_1_1"/>
+  
+  <!-- ant-javacard task from javacard.pro -->
+  <taskdef name="javacard" classname="pro.javacard.ant.JavaCard" classpath="../AppletPlayground/ext/ant-javacard.jar"/>
+  <!-- All included applets -->
+  <target name="passmg">
+    <javacard jckit="${JC222}">
+      <!-- passmg -->
+      <cap output="passmg.cap" sources="passmg">
+        <applet class="passmg.passmg" aid="A10000000003"/>
+		<import exps="${OP20}" jar="${OP20}/visaop20.jar"/>
+      </cap>
+    </javacard>
+  </target>
+</project>
